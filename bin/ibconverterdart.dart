@@ -17,8 +17,15 @@ void main() {
     exit(-1);
   }
 
-  var yaml = loadYaml(tfmFile.readAsStringSync()) as Map;
-  var writer = YAMLWriter(identSize: 1);
+  Map yaml;
+  try {
+    yaml = loadYaml(tfmFile.readAsStringSync()) as Map;
+  } on Exception catch (_) {
+    print('Something went wrong while parsing yaml from ${tfmFile.path}... Is it formatted correctly?');
+    exit(-1);
+  }
+
+  YAMLWriter writer = YAMLWriter(identSize: 1);
   String yamlString = """# Plex Indefinite Bans File
 # Players with their UUID / IP / Usernames in here will be indefinitely banned until removed
   
