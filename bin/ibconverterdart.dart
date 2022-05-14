@@ -5,14 +5,14 @@ import 'package:yaml_writer/yaml_writer.dart';
 
 void main() {
   File plexFile = File('./indefbans.yml');
-  if (plexFile.existsSync() == false) {
+  if (!plexFile.existsSync()) {
     plexFile.createSync();
   }
 
   stdout.write('Enter the path to the TotalFreedomMod indefinitebans.yml file: ');
   String path = stdin.readLineSync().toString();
   File tfmFile = File(path);
-  if (tfmFile.existsSync() == false) {
+  if (!tfmFile.existsSync()) {
     print('Cannot found a file with path $path');
     exit(-1);
   }
@@ -41,7 +41,7 @@ void main() {
     if (value['uuid'] != null && !value['uuid'].isEmpty) {
       print('Adding ${value['uuid']}');
       temp += writer.write({
-        'uuid': [value['uuid']]
+        'uuids': [value['uuid']]
       });
     }
 
