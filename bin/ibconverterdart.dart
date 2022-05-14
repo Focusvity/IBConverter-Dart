@@ -29,7 +29,7 @@ void main() {
   String yamlString = """# Plex Indefinite Bans File
 # Players with their UUID / IP / Usernames in here will be indefinitely banned until removed
   
-# If you want to get someone's UUID, use https://api.ashcon.app/mojang/v2/user/<username>""";
+# If you want to get someone's UUID, use https://api.ashcon.app/mojang/v2/user/<username>\n""";
 
   int i = 0;
   yaml.forEach((key, value) {
